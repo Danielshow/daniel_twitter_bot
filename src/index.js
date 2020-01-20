@@ -1,20 +1,14 @@
-import express from 'express';
+import Twit from 'twit'
 
-const app = express();
 require('dotenv').config()
 
-app.use(express.json())
-
-app.get('/', (req, res) => {
-  res.json({message: "it works"})
+const T = new Twit({
+  consumer_key: process.env.CONSUMER_KEY,
+  consumer_secret: process.env.CONSUMER_SECRET,
+  access_token: process.env.ACCESS_TOKEN,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET,
+  timeout_ms: 60*1000,
+  strictSSL: true,
 })
 
-// handle all routes
-app.get("*", function(req, res) {
-  res.json({message: "Routes not available"});
-});
-
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log("App listening on PORT 3000")
-})
+console.log("ddd")

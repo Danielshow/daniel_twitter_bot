@@ -1,2 +1,4 @@
-# NodeBabel
-This is a node project template that uses babel to transpile es6 code to es5 
+### My Twitter Bot
+This is a bot that get some tweets based on some keywords using twitter api and twit npm package, favorite and retweet some tweet.
+
+

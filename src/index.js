@@ -1,14 +1,54 @@
-import Twit from 'twit'
+import Twit from "twit";
+import config from "./config";
 
-require('dotenv').config()
+const Twitter = new Twit(config);
 
-const T = new Twit({
-  consumer_key: process.env.CONSUMER_KEY,
-  consumer_secret: process.env.CONSUMER_SECRET,
-  access_token: process.env.ACCESS_TOKEN,
-  access_token_secret: process.env.ACCESS_TOKEN_SECRET,
-  timeout_ms: 60*1000,
-  strictSSL: true,
-})
+// Strem data based on keywords
+const keyword = [
+  "rails",
+  "ruby on rails",
+  "redux",
+  "Redux",
+  "graphql",
+  "GraphQL",
+  "Javascript",
+  "javascript",
+  "ruby",
+  "gatsby",
+  "github",
+  "Github"
+];
+const stream = Twitter.stream("statuses/filter", {
+  track: keyword,
+  lang: "en",
+  result_type: "recent"
+});
 
-console.log(T)
+stream.on("tweet", tweet => {
+  // favorite tweet
+  // if lang is null dont favorite it
+  if (!tweet.lang) return
+  // tweet.id_str = Id of the tweet
+  console.log(tweet);
+  favorite(tweet.id_str);
+});
+
+const retweet = id => {
+  Twitter.post("statuses/retweet/:id", { id }, function(err, data, response) {
+    if (!err) {
+      console.log("Tweet favorited");
+    } else {
+      console.log(err.message);
+    }
+  });
+};
+
+const favorite = id => {
+  Twitter.post("favorites/create", { id }, function(err, response) {
+    if (!err) {
+      console.log("Tweet favorited");
+    } else {
+      console.log(err.message);
+    }
+  });
+};

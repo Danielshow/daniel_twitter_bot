@@ -11,4 +11,4 @@ const T = new Twit({
   strictSSL: true,
 })
 
-console.log("ddd")
+console.log(T)

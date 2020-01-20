@@ -1,9 +1,9 @@
 {
-  "name": "LocateME_API",
+  "name": "sampleBot",
   "version": "1.0.0",
-  "description": "A Security application",
+  "description": "Sample Bot",
   "main": "index.js",
-  "repository": "git@github.com:Danielshow/LocateME_API.git",
+  "repository": "git@github.com:Danielshow/sample_bot.git",
   "author": "danielshow <danielshotonwa53@gmail.com>",
   "license": "MIT",
   "scripts": {

@@ -1,3 +1,5 @@
+import { directMessage } from '../helpers'
+
 const generateMessage = name => {
   const days = [
     "Sunday",
@@ -9,15 +11,15 @@ const generateMessage = name => {
     "Staturday"
   ]
   const day = days[new Date().getDay()]
-  return `Hi ${name}, Thanks for following me. Happy ${day}`
+  return `Hi ${name}, Thanks for following me. Happy ${day} 🚀🚀🚀`
 }
 
-export const sendMessage = (user, directMessage) => {
+export const sendMessage = (user) => {
   const my_user_name = process.env.MY_USER_NAME
   const { screen_name, name } = user.source;
   const data = {
     screen_name,
-    text: GenerateMessage(name)
+    text: generateMessage(name)
   }
   if (screen_name != my_user_name){
     directMessage(data)

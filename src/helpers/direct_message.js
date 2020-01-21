@@ -1,3 +1,4 @@
+import Twitter from '../twit';
 export const directMessage = (data) => {
   Twitter.post("direct_messages/new", data, (err, data) => {
     if (err) {

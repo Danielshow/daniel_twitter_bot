@@ -1,4 +1,4 @@
-import Twitter from '../twit';
+import Twitter from "../twit";
 export const favorite = id => {
   Twitter.post("favorites/create", { id }, function(err, response) {
     if (!err) {

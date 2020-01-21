@@ -1,5 +1,5 @@
-import Twitter from '../twit';
-import { favorite, retweet} from '../helpers'
+import Twitter from "../twit";
+import { favorite, retweet } from "../helpers";
 
 const keyword = [
   "rails",
@@ -23,11 +23,17 @@ export const retweetAndLike = () => {
     lang: "en",
     result_type: "recent"
   });
-  
+
   stream.on("tweet", tweet => {
-    if (!tweet.lang || tweet.lang != 'en' || tweet.in_reply_to_status_id_str || tweet.retweeted_status) return
+    if (
+      !tweet.lang ||
+      tweet.lang != "en" ||
+      tweet.in_reply_to_status_id_str ||
+      tweet.retweeted_status
+    )
+      return;
     console.log(tweet);
     favorite(tweet.id_str);
     retweet(tweet.id_str);
   });
-}
+};

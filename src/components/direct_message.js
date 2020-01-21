@@ -1,7 +1,7 @@
-import Twitter from '../twit'
-import { sendMessage } from '../helpers'
+import Twitter from "../twit";
+import { sendMessage } from "../helpers";
 
 const autoDirectMessage = () => {
-  const stream = Twitter.stream('user')
-  stream.on('follow', sendMessage)
-}
+  const stream = Twitter.stream("user");
+  stream.on("follow", sendMessage);
+};

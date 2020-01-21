@@ -1,4 +1,5 @@
-import { directMessage } from '../helpers'
+import { directMessage } from "../helpers";
+require("dotenv").config();
 
 const generateMessage = name => {
   const days = [
@@ -9,19 +10,19 @@ const generateMessage = name => {
     "Thursday",
     "Friday",
     "Staturday"
-  ]
-  const day = days[new Date().getDay()]
-  return `Hi ${name}, Thanks for following me. Happy ${day} 🚀🚀🚀`
-}
+  ];
+  const day = days[new Date().getDay()];
+  return `Hi ${name}, Thanks for following me. Happy ${day} 🚀🚀🚀`;
+};
 
-export const sendMessage = (user) => {
-  const my_user_name = process.env.MY_USER_NAME
+export const sendMessage = user => {
+  const my_user_name = process.env.MY_USER_NAME;
   const { screen_name, name } = user.source;
   const data = {
     screen_name,
     text: generateMessage(name)
+  };
+  if (screen_name != my_user_name) {
+    directMessage(data);
   }
-  if (screen_name != my_user_name){
-    directMessage(data)
-  }
-}
+};

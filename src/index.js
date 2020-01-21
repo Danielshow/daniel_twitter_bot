@@ -25,10 +25,7 @@ const stream = Twitter.stream("statuses/filter", {
 });
 
 stream.on("tweet", tweet => {
-  // favorite tweet
-  // if lang is null dont favorite it
-  if (!tweet.lang) return
-  // tweet.id_str = Id of the tweet
+  if (!tweet.lang || tweet.lang != 'en' || tweet.in_reply_to_status_id_str || tweet.retweeted_status) return
   console.log(tweet);
   favorite(tweet.id_str);
 });

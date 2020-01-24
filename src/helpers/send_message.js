@@ -16,6 +16,7 @@ const generateMessage = name => {
 };
 
 export const sendMessage = user => {
+  console.log("HIT HIT HIT")
   const my_user_name = process.env.MY_USER_NAME;
   const { screen_name, name } = user.source;
   const data = {

@@ -10,7 +10,6 @@ const keyword = [
   "GraphQL",
   "Javascript",
   "javascript",
-  "ruby",
   "gatsbyJs",
   "github",
   "Github",

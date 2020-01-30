@@ -2,7 +2,6 @@ import Twitter from "../twit";
 import { favorite, retweet } from "../helpers";
 
 const keyword = [
-  "rails",
   "ruby on rails",
   "redux",
   "Redux",
@@ -14,8 +13,10 @@ const keyword = [
   "github",
   "Github",
   "ReactJS",
-  "DSCYabatech"
+  "DSCYabatech",
+  "100DaysofCode"
 ];
+
 export const retweetAndLike = () => {
   const stream = Twitter.stream("statuses/filter", {
     track: keyword,
@@ -28,7 +29,9 @@ export const retweetAndLike = () => {
       !tweet.lang ||
       tweet.lang != "en" ||
       tweet.in_reply_to_status_id_str ||
-      tweet.retweeted_status
+      tweet.retweeted_status ||
+      tweet.quoted_status ||
+      tweet.user.name.match(/bot/)
     )
       return;
     console.log(tweet);

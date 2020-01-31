@@ -10,20 +10,19 @@ const keyword = [
   "Javascript",
   "javascript",
   "gatsbyJs",
-  "github",
-  "Github",
   "ReactJS",
   "DSCYabatech",
   "100DaysofCode"
 ];
 
-export const retweetAndLike = () => {
-  const stream = Twitter.stream("statuses/filter", {
+export const stream = Twitter.stream("statuses/filter", {
     track: keyword,
     lang: "en",
     result_type: "recent"
   });
 
+export const retweetAndLike = () => {
+  stream.start()
   stream.on("tweet", tweet => {
     if (
       !tweet.lang ||
@@ -31,11 +30,11 @@ export const retweetAndLike = () => {
       tweet.in_reply_to_status_id_str ||
       tweet.retweeted_status ||
       tweet.quoted_status ||
-      tweet.user.name.match(/bot/)
+      tweet.user.name.match(/bot/i) ||
+      tweet.user.name.match(/issue/i)
     )
       return;
     console.log(tweet);
-    favorite(tweet.id_str);
-    retweet(tweet.id_str);
+    math.random() > 0.5 ? favorite(tweet.id_str) : retweet(tweet.id_str);
   });
 };

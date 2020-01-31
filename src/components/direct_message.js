@@ -4,8 +4,4 @@ import { sendMessage } from "../helpers";
 export const autoDirectMessage = () => {
   const stream = Twitter.stream('statuses/filter', { track: '@d_showWorld' });
   stream.on("follow", sendMessage);
-  stream.on("tweet", tweet => {
-    console.log("STUPID HIT")
-  });
-  // console.log(stream)
-};
+ };

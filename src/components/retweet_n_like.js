@@ -34,7 +34,6 @@ export const retweetAndLike = () => {
       tweet.user.name.match(/issue/i)
     )
       return;
-    console.log(tweet);
-    math.random() > 0.5 ? favorite(tweet.id_str) : retweet(tweet.id_str);
+    Math.random() > 0.5 ? favorite(tweet.id_str) : retweet(tweet.id_str);
   });
 };

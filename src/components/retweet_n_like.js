@@ -31,7 +31,7 @@ export const retweetAndLike = () => {
       tweet.retweeted_status ||
       tweet.quoted_status ||
       tweet.user.name.match(/bot/i) ||
-      tweet.user.name.match(/issue/i)
+      tweet.user.name.match(/issue/i) || tweet.user.name.match(/job/i)
     )
       return;
     Math.random() > 0.5 ? favorite(tweet.id_str) : retweet(tweet.id_str);
